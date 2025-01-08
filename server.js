@@ -11,11 +11,10 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 
 
-
-
 //controlles
 
 const authController = require("./controllers/auth.js");
+const requestsController = require('./controllers/requests.js');
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -44,16 +43,22 @@ app.use(passUserToView);
 
 //Public routs
 
-app.get("/", (req, res) => {
-    res.render("index.ejs");
-  });
+app.get('/', (req, res) => {
+
+  if (req.session.user) {
+    res.redirect(`/users/${req.session.user._id}/requests`);
+  } else {
+    res.render('index.ejs');
+  }
+
+});
   
   
 app.use("/auth", authController);
 
 
 //Protected routs
-app.use("/auth",isSignedIn, );
+app.use("/users/:userId/requests",isSignedIn, requestsController );
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
