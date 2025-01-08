@@ -53,9 +53,7 @@ app.use("/auth", authController);
 
 
 //Protected routs
-app.get("/vip-lounge", isSignedIn, (req, res) => {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-});
+app.use("/auth",isSignedIn, );
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
