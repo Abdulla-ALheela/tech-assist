@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Requests</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Your Requests</h1>
-    <ul>
-        <% requests.forEach((requests)=>{ %>
-        <li>Request: <%= requests.requestId %></li>
-        <% }) %>
-      </ul>
-    <a href="/users/<%=user._id%>/requests/new">Add a request</a>
+        <h1>Your Requests</h1>
+        <ul>
+            <% requests.forEach((requests)=>{ %>
+                <li>
+                    <a href="/users/<%= user._id %>/requests/<%= requests._id %>">
+                        Request: <%= requests.requestId %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+        <a href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>
+
 </html>

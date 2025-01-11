@@ -4,7 +4,7 @@ const requestSchema = new mongoose.Schema({
 
   requestId: { type: Number },
 
-  request: { type: String, required: true, },
+  requestDescription: { type: String, required: true, },
 
   admin: {type: mongoose.Schema.Types.ObjectId, 
     ref: "User",

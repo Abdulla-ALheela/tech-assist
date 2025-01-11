@@ -50,5 +50,25 @@ try{
     }
   });
 
+  router.get('/:requestId', async (req, res) => {
+    try {
+    
+      const currentUser = await User.findById(req.session.user._id)
+
+      const request = currentUser.requests.id(req.params.requestId);
+
+      const admin = await User.findById(request.admin)
+
+      res.render('requests/show.ejs', {
+        request: request,
+      admin:admin,
+      });
+    } catch (error) {
+   
+      console.log(error);
+      res.redirect('/');
+    }
+  });
+
 
 module.exports = router;
