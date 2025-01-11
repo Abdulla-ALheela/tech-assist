@@ -13,8 +13,13 @@
 
     <p>Assigned Admin: <%= admin.username%> </p>
 
+    <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">
+        Edit this request
+      </a>
+
     <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE"method="POST">
     <button type="submit">Delete this Request</button>
     </form>
+
   </body>
 </html>
