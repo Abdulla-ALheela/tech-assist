@@ -9,8 +9,7 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <form action="/users/<%= user._id %>/requests/<%= request._id %>/edit?_method=PUT"method="POST">
-
+    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT"method="POST">
             <label for="requestDescription">Request:</label>
             <input type="text" name="requestDescription" id="requestDescription" value="<%= request.requestDescription %>" />
 
