@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const requestSchema = new mongoose.Schema({
 
-  requestId: { type: Number },
+  requestId: { type: String },
 
   requestDescription: { type: String, required: true, },
 
