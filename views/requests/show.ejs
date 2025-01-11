@@ -12,5 +12,9 @@
     <p>request:<%= request.requestDescription %></p>
 
     <p>Assigned Admin: <%= admin.username%> </p>
+
+    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE"method="POST">
+    <button type="submit">Delete this Request</button>
+    </form>
   </body>
 </html>

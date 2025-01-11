@@ -70,5 +70,21 @@ try{
     }
   });
 
+  router.delete('/:requestId', async (req, res) => {
+    try {
+   
+      const currentUser = await User.findById(req.session.user._id);
+
+      currentUser.requests.id(req.params.requestId).deleteOne();
+
+      await currentUser.save();
+
+      res.redirect(`/users/${currentUser._id}/requests`);
+    } catch (error) {
+  
+      console.log(error);
+      res.redirect('/');
+    }
+  });
 
 module.exports = router;
