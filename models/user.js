@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 
 const requestSchema = new mongoose.Schema({
 
-  requesId: { type: String },
+  requestId: { type: Number },
 
   request: { type: String, required: true, },
+
+  admin: {type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",
+   }
 
 });
 

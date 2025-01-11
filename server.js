@@ -39,12 +39,16 @@ app.use(
   })
 );
 
+
+
+
 app.use(passUserToView);
+
 
 //Public routs
 
 app.get('/', (req, res) => {
-
+  
   if (req.session.user) {
     res.redirect(`/users/${req.session.user._id}/requests`);
   } else {
@@ -58,6 +62,7 @@ app.use("/auth", authController);
 
 
 //Protected routs
+
 app.use("/users/:userId/requests",isSignedIn, requestsController );
 
 app.listen(port, () => {

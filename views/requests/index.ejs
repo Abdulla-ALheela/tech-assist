@@ -8,5 +8,11 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Your Requests</h1>
+    <ul>
+        <% requests.forEach((requests)=>{ %>
+        <li>Request: <%= requests.requestId %></li>
+        <% }) %>
+      </ul>
+    <a href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>
 </html>
