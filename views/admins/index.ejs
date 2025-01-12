@@ -8,6 +8,17 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Hi Admin</h1>
+
+    <ul>
+        <% users.forEach((user)=>{ %>
+            <li>
+                <a href="/users/<%= user._id %>/admins/<%= user._id %>/<%= user.requests._id %>">
+                    Request: <%= user.requests.requestId %>
+                </a>
+            </li>
+            <% }) %>
+    </ul>
+
         <a class="button" href="/users/<%=currentUser._id%>/admins/master">
    Create Admins
         </a>

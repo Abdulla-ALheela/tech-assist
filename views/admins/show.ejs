@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= request.requestId %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Request ID:<%= request.requestId %></h1>
+
+    <p>request:<%= request.requestDescription %></p>
+
+    <p>Assigned Admin: <%= admin.username%> </p>
+
+  </body>
+</html>

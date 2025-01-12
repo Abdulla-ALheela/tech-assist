@@ -11,10 +11,10 @@
     <%- include('../partials/_navbar.ejs') %>
         <h1>Your Requests</h1>
         <ul>
-            <% requests.forEach((requests)=>{ %>
+            <% requests.forEach((request)=>{ %>
                 <li>
-                    <a href="/users/<%= user._id %>/requests/<%= requests._id %>">
-                        Request: <%= requests.requestId %>
+                    <a href="/users/<%= user._id %>/requests/<%= request._id %>">
+                        Request: <%= request.requestId %>
                     </a>
                 </li>
                 <% }) %>
