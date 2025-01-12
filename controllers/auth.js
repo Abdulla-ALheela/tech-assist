@@ -61,7 +61,7 @@ router.get("/sign-in", (req, res) => {
       if (!validPassword) {
         return res.send("Login failed. Please try again.");
       }
-
+  
       req.session.user = {
         username: userInDatabase.username,
         _id: userInDatabase._id,

@@ -8,7 +8,6 @@ const Counter = require('../models/counter.js');
 
 router.get('/', async (req, res) => {
   try {
-  
     const currentUser = await User.findById(req.session.user._id);
 
     res.render('requests/index.ejs', {

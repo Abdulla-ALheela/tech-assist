@@ -17,7 +17,7 @@
             <label for="admin">Select Admin:</label>
             <select id="admin" name="admin">
                 <% users.forEach((users)=>{ %>
-                    <% if(users.isadmin===true){%>
+                    <% if(users.isAdmin===true){%>
                         <option value="<%= users._id %>">
                             <%= users.username %>
                         </option>

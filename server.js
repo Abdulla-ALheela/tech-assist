@@ -9,12 +9,14 @@ const session = require('express-session');
 const MongoStore = require("connect-mongo");
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-
+const isAdmin = require("./middleware/is-admin.js");
+const User = require("./models/user");
 
 //controlles
 
 const authController = require("./controllers/auth.js");
 const requestsController = require('./controllers/requests.js');
+const adminsController = require('./controllers/admins.js');
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -47,23 +49,29 @@ app.use(passUserToView);
 
 //Public routs
 
-app.get('/', (req, res) => {
-  
+app.get('/', async (req, res) => {
   if (req.session.user) {
-    res.redirect(`/users/${req.session.user._id}/requests`);
+    const checkIsAdmin = await User.findById(req.session.user._id)
+    if (checkIsAdmin.isAdmin) {
+      res.redirect(`/users/${req.session.user._id}/admins`);
+    } else {
+      res.redirect(`/users/${req.session.user._id}/requests`);
+    }
   } else {
     res.render('index.ejs');
   }
 
 });
-  
-  
+
+
 app.use("/auth", authController);
 
 
 //Protected routs
-
-app.use("/users/:userId/requests",isSignedIn, requestsController );
+app.use(isSignedIn)
+app.use("/users/:userId/requests", requestsController);
+app.use(isAdmin)
+app.use("/users/:userId/admins", adminsController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
