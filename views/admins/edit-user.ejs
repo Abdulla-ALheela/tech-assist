@@ -6,6 +6,7 @@
     <title>Edit User</title>
 </head>
 <body>
+    <%- include('../partials/_admin-navbar.ejs') %>
     <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
 
     <label for="is-Admin">Make <%= user.username %> Admin</label>

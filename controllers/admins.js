@@ -87,7 +87,7 @@ const allUsers = await User.find();
 
       const admin = await User.findById(request.admin)
 
-      res.render('requests/show.ejs', {
+      res.render('admins/show.ejs', {
         request: request,
         admin:admin,
       });
