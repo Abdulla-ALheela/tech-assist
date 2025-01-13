@@ -111,7 +111,7 @@ const allUsers = await User.find();
       await currentUser.save();
 
       res.redirect(
-        `/users/${currentUser._id}/admins/${currentUser._id}/${req.params.requestId}/edit`
+        `/users/${currentUser._id}/admins`
       );
 
     } catch (error) {

@@ -15,15 +15,15 @@
 
             <label for="admin">Select Admin:</label>
             <select id="admin" name="admin">
-                <% users.forEach((users)=>{ %>
-                    <% if(users.isAdmin===true){%>
-                        <option value="<%= users._id %>">
-                            <%= users.username === admin.username ?  admin.username : "" %>
+                <% users.forEach((user)=>{ %>
+                    <% if(user.isAdmin===true){%>
+                        <option value="<%= user._id %>" <%= user.username === admin.username ? "selected" : "" %>>
+                            <%= user.username %>
                         </option>
                     <%};%>
                <% }) %>
             </select>
-            <button type="submit">Add Request</button>
+            <button type="submit">Edit Request</button>
         </form>
 </body>
 

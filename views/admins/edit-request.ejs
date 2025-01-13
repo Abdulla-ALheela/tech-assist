@@ -13,6 +13,8 @@
 
     <p>Assigned Admin: <%= admin.username%> </p>
 
+    <p>User Name: <%= currentUser.username%> </p>
+
     <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"method="POST">
       <label for="status">Status:</label>
       <select id="status" name="status">
