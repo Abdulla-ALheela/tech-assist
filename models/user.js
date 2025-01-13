@@ -6,9 +6,9 @@ const requestSchema = new mongoose.Schema({
 
   requestDescription: { type: String, required: true, },
 
-  admin: {type: mongoose.Schema.Types.ObjectId, 
-    ref: "User",
-   }
+  admin: {type: mongoose.Schema.Types.ObjectId, ref: "User",},
+
+  status: {type: String,enum: ['open', 'in progress', 'closed', 'rejected'],},
 
 });
 

@@ -9,8 +9,6 @@ const { default: mongoose } = require('mongoose');
 router.get('/', async (req, res) => {
     try {
 
-let allRequests = [];
-let i = 0;
       const currentUser = await User.findById(req.session.user._id);
 
       const users = await User.aggregate([
@@ -63,6 +61,30 @@ const allUsers = await User.find();
     }
   });
 
+
+
+  router.get("/:userId/:requestId/edit", async (req, res) => {
+    try {
+    
+      const currentUser = await User.findById(req.params.userId)
+
+      const request = currentUser.requests.id(req.params.requestId);
+
+      const admin = await User.findById(request.admin)
+      
+      res.render('admins/edit-request.ejs', {
+        request: request,
+        admin:admin,
+        currentUser:currentUser,
+      });
+    } catch (error) {
+   
+      console.log(error);
+      res.redirect('/');
+    }
+  });
+
+  
   router.put("/:userId", async (req, res) => {
  
 
@@ -77,24 +99,26 @@ const allUsers = await User.find();
     res.redirect(`/users/:userId/admins/master`);
   });
 
-
-  router.get('/:userId/:requestId', async (req, res) => {
+  router.put("/:userId/:requestId", async (req, res) => {
     try {
-    
-      const currentUser = await User.findById(req.params.userId)
+   
+      const currentUser = await User.findById(req.params.userId);
 
       const request = currentUser.requests.id(req.params.requestId);
+    
+      request.set(req.body);
+    
+      await currentUser.save();
 
-      const admin = await User.findById(request.admin)
+      res.redirect(
+        `/users/${currentUser._id}/admins/${currentUser._id}/${req.params.requestId}/edit`
+      );
 
-      res.render('admins/show.ejs', {
-        request: request,
-        admin:admin,
-      });
     } catch (error) {
-   
+
       console.log(error);
       res.redirect('/');
+
     }
   });
 
