@@ -16,6 +16,7 @@
     <p>User Name: <%= currentUser.username%> </p>
 
     <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"method="POST">
+      <!-- dispaly the current status of the request -->
       <label for="status">Status:</label>
       <select id="status" name="status">
         <option value="open"  <%= request.status === "open" ? "selected" : "" %>>open</option>
@@ -23,7 +24,9 @@
         <option value="closed" <%= request.status === "closed" ? "selected" : "" %>>closed</option>
         <option value="rejected" <%= request.status === "rejected" ? "selected" : "" %>>Rejected</option>
       </select>
+
       <button type="submit">change status</button>
+
     </form>
   </body>
 </html>

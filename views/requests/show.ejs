@@ -7,6 +7,7 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
+
     <h1>Request ID:<%= request.requestId %></h1>
 
     <p>request:<%= request.requestDescription %></p>
@@ -17,10 +18,12 @@
 
     <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">
         Edit this request
-      </a>
+    </a>
 
     <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE"method="POST">
+
     <button type="submit">Delete this Request</button>
+
     </form>
 
   </body>

@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Admins</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Admins</title>
 </head>
+
 <body>
   <%- include('../partials/_admin-navbar.ejs') %>
+
     <h1>All users</h1>
-    <%if(allUsers.length !== 0) {%>
-        <% allUsers.forEach((user)=>{ %>
+
+    <%if(allUsers.length !==0) {%>
+
+      <% allUsers.forEach((user)=>{ %>
+
         <a class="button" href="/users/<%=currentUser._id%>/admins/<%=user._id%>/edit-user">
           <%= user.username %>
         </a>
-        <% }) %>
-        <%}else{%>
-          <h2>There are no active users.</h2>
-        <%}%>
+        
+      <% }) %>
+
+    <%}else{%>
+
+     <h2>There are no active users.</h2>
+
+    <%}%>
 </body>
+
 </html>

@@ -9,7 +9,9 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+
         <h1>Your Requests</h1>
+        
         <ul>
             <% requests.forEach((request)=>{ %>
                 <li>
@@ -19,6 +21,7 @@
                 </li>
                 <% }) %>
         </ul>
+
         <a href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>
 

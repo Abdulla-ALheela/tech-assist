@@ -9,6 +9,7 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    
         <form action="/users/:userId/requests" method="POST">
 
             <label for="requestDescription">Request:</label>
@@ -16,6 +17,7 @@
 
             <label for="admin">Select Admin:</label>
             <select id="admin" name="admin">
+
                 <% users.forEach((user)=>{ %>
                     <% if(user.isAdmin===true){%>
                         <option value="<%= user._id %>">
@@ -23,11 +25,13 @@
                         </option>
                     <%};%>
                <% }) %>
+
             </select>
 
             <input type="hidden" id="status" name="status" value="open">
 
             <button type="submit">Add Request</button>
+
         </form>
 </body>
 
