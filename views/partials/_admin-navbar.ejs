@@ -1,8 +1,8 @@
 <nav>
     <% if(user) { %>
-    <a href="/users/<%= user._id %>/admins">Your Assigned Requests</a>
-    <a href="/users/<%= user._id %>/admins/master">Make an admin</a>
-    <a href="/auth/sign-out">Sign Out</a>
+    <a class="button-86" href="/users/<%= user._id %>/admins">Your Assigned Requests</a>
+    <a class="button-86" href="/users/<%= user._id %>/admins/master">Make an admin</a>
+    <a class="button-86" href="/auth/sign-out">Sign Out</a>
     <% } else { %>
     <% } %>
   </nav>

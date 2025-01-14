@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit User</title>
 </head>
+
 <body>
     <%- include('../partials/_admin-navbar.ejs') %>
-    <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
+        <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
 
-    <label for="is-Admin">Make <%= user.username %> Admin</label>
-    <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
+            <label for="is-Admin">Make <%= user.username %> Admin</label>
+            <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
 
-    <button type="submit">Change User to Admin</button>
-</form>
+                <button type="submit" class="btn">Change User to Admin</button>
+        </form>
 </body>
+
 </html>

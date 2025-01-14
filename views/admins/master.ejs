@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Create Admins</title>
 </head>
 
@@ -16,17 +17,17 @@
 
       <% allUsers.forEach((user)=>{ %>
 
-        <a class="button" href="/users/<%=currentUser._id%>/admins/<%=user._id%>/edit-user">
+        <a class="btn" href="/users/<%=currentUser._id%>/admins/<%=user._id%>/edit-user">
           <%= user.username %>
         </a>
-        
-      <% }) %>
 
-    <%}else{%>
+        <% }) %>
 
-     <h2>There are no active users.</h2>
+          <%}else{%>
 
-    <%}%>
+            <h2>There are no active users.</h2>
+
+            <%}%>
 </body>
 
 </html>

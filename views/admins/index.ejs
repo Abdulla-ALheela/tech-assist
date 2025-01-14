@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>admin requests</title>
 </head>
+
 <body>
     <%- include('../partials/_admin-navbar.ejs') %>
-    <h1>Hi Admin</h1>
+        <h1>Hi Admin</h1>
 
-    <ul>
-        <% users.forEach((user)=>{ %>
-            <li>
-                <a href="/users/<%= user._id %>/admins/<%= user._id %>/<%= user.requests._id %>/edit">
-                    Request: <%= user.requests.requestId %>
-                </a>
-            </li>
-            <% }) %>
-    </ul>
+        <ul>
+            <% users.forEach((user)=>{ %>
+                <li>
+                    <a href="/users/<%= user._id %>/admins/<%= user._id %>/<%= user.requests._id %>/edit">
+                        Request: <%= user.requests.requestId %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
 
-        <a class="button" href="/users/<%=currentUser._id%>/admins/master">
-   Create Admins
+        <a class="btn" href="/users/<%=currentUser._id%>/admins/master">
+            Create Admins
         </a>
 </body>
+
 </html>

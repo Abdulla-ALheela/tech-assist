@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= request.requestId %></title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Request ID:<%= request.requestId %></h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>
+    <%= request.requestId %>
+  </title>
+</head>
 
-    <p>request:<%= request.requestDescription %></p>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
 
-    <p>Assigned Admin: <%= admin.username%> </p>
+    <h1>Request ID:<%= request.requestId %>
+    </h1>
 
-    <p>Status: <%= request.status%> </p>
+    <p>request:<%= request.requestDescription %>
+    </p>
+
+    <p>Assigned Admin: <%= admin.username%>
+    </p>
+
+    <p>Status: <%= request.status%>
+    </p>
 
     <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">
-        Edit this request
+      Edit this request
     </a>
 
-    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE"method="POST">
+    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE" method="POST">
 
-    <button type="submit">Delete this Request</button>
+      <button class="btn" type="submit">Delete this Request</button>
 
     </form>
 
-  </body>
+</body>
+
 </html>

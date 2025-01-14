@@ -4,29 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit a Request</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT"method="POST">
+        <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT" method="POST">
 
             <label for="requestDescription">Request:</label>
-            <input type="text" name="requestDescription" id="requestDescription" value="<%= request.requestDescription %>" />
+            <input type="text" name="requestDescription" id="requestDescription"
+                value="<%= request.requestDescription %>" />
 
             <label for="admin">Select Admin:</label>
             <select id="admin" name="admin">
                 <% users.forEach((user)=>{ %>
                     <% if(user.isAdmin===true){%>
-                        <option value="<%= user._id %>" <%= user.username === admin.username ? "selected" : "" %>>
+                        <option value="<%= user._id %>" <%=user.username===admin.username ? "selected" : "" %>>
                             <%= user.username %>
                         </option>
-                    <%};%>
-               <% }) %>
+                        <%};%>
+                            <% }) %>
             </select>
 
-            <button type="submit">Edit Request</button>
-            
+            <button class="btn" type="submit">Edit Request</button>
+
         </form>
 </body>
 

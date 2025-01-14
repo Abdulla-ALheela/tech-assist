@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>User Requests</title>
 </head>
 
@@ -11,7 +12,7 @@
     <%- include('../partials/_navbar.ejs') %>
 
         <h1>Your Requests</h1>
-        
+
         <ul>
             <% requests.forEach((request)=>{ %>
                 <li>
@@ -22,7 +23,7 @@
                 <% }) %>
         </ul>
 
-        <a href="/users/<%=user._id%>/requests/new">Add a request</a>
+        <a class="btn" href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>
 
 </html>

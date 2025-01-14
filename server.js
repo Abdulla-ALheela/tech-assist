@@ -11,6 +11,7 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const isAdmin = require("./middleware/is-admin.js");
 const User = require("./models/user");
+const path = require('path');
 
 //controlles
 
@@ -32,6 +33,9 @@ app.use(methodOverride("_method"));
 
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+
+//CSS Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 
 //creating the session and save in the database
 app.use(

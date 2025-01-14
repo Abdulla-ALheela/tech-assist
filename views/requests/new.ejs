@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Add a New Request</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    
+
         <form action="/users/:userId/requests" method="POST">
 
             <label for="requestDescription">Request:</label>
@@ -23,14 +24,14 @@
                         <option value="<%= user._id %>">
                             <%= user.username %>
                         </option>
-                    <%};%>
-               <% }) %>
+                        <%};%>
+                            <% }) %>
 
             </select>
 
             <input type="hidden" id="status" name="status" value="open">
 
-            <button type="submit">Add Request</button>
+            <button class="btn" type="submit">Add Request</button>
 
         </form>
 </body>

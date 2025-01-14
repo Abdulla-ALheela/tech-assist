@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= request.requestId %></title>
-  </head>
-  <body>
-    <%- include('../partials/_admin-navbar.ejs') %>
-    <h1>Request ID:<%= request.requestId %></h1>
 
-    <p>request:<%= request.requestDescription %></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>
+    <%= request.requestId %>
+  </title>
+</head>
 
-    <p>Assigned Admin: <%= admin.username%> </p>
+<body>
+  <%- include('../partials/_admin-navbar.ejs') %>
+    <h1>Request ID:<%= request.requestId %>
+    </h1>
 
-    <p>User Name: <%= currentUser.username%> </p>
+    <p>request:<%= request.requestDescription %>
+    </p>
 
-    <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"method="POST">
+    <p>Assigned Admin: <%= admin.username%>
+    </p>
+
+    <p>User Name: <%= currentUser.username%>
+    </p>
+
+    <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"
+      method="POST">
       <!-- dispaly the current status of the request -->
       <label for="status">Status:</label>
       <select id="status" name="status">
-        <option value="open"  <%= request.status === "open" ? "selected" : "" %>>open</option>
-        <option value="in progress" <%= request.status === "in progress" ? "selected" : "" %>>in progress</option>
-        <option value="closed" <%= request.status === "closed" ? "selected" : "" %>>closed</option>
-        <option value="rejected" <%= request.status === "rejected" ? "selected" : "" %>>Rejected</option>
+        <option value="open" <%=request.status==="open" ? "selected" : "" %>>open</option>
+        <option value="in progress" <%=request.status==="in progress" ? "selected" : "" %>>in progress</option>
+        <option value="closed" <%=request.status==="closed" ? "selected" : "" %>>closed</option>
+        <option value="rejected" <%=request.status==="rejected" ? "selected" : "" %>>Rejected</option>
       </select>
 
-      <button type="submit">change status</button>
+      <button type="submit" class="btn">change status</button>
 
     </form>
-  </body>
+</body>
+
 </html>
