@@ -12,31 +12,33 @@
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <div class="container center">
-    <div class="requests-card">
+    <div class="container center">
+      <div class="requests-card">
 
-    <h1 class="font">Request ID:<%= request.requestId %></h1>
+        <h1 class="font"><b>Request ID:</b> <%= request.requestId %></h1>
+        <hr />
+        <p class="description"><b>Request Description:</b> <%= request.requestDescription %> </p>
 
-    <p class="description" >request:<%= request.requestDescription %> </p>
+        <p class="description"><b>Assigned Admin:</b> <%= admin.username%>
+        </p>
 
-    <p class="description" >Assigned Admin: <%= admin.username%></p>
+        <p class="description"><b>Status: </b> <%= request.status%>
+        </p>
 
-    <p class="description" >Status: <%= request.status%></p>
+        <div class="more-information">
+          <button class="button-86">
+            <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">Edit this request</a>
+          </button>
 
-    <div class="more-information">
-      <button class="button-86">
-        <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">Edit this request</a>
-      </button>
- 
 
-    <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE" method="POST">
+          <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE" method="POST">
 
-      <button class="button-86" type="submit">Delete this Request</button>
+            <button class="button-86" type="submit">Delete this Request</button>
 
-    </form>
-  </div>
-  </div>
-</div>
+          </form>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>

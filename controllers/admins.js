@@ -83,11 +83,14 @@ router.get("/:userId/:requestId/edit", async (req, res) => {
     const request = currentUser.requests.id(req.params.requestId);
     const admin = await User.findById(request.admin)
 
+    //all users
+    const users = await User.find();
+
     res.render('admins/edit-request.ejs', {
       request: request,
       admin: admin,
       currentUser: currentUser,
-
+      users: users,
     });
   } catch (error) {
 

@@ -10,24 +10,27 @@
 
 <body>
   <%- include('../partials/_admin-navbar.ejs') %>
+    <div class="row">
+      <%if(allUsers.length !==0) {%>
+        <h1 class="title">All Users</h1>
+        <div class="row"></div>
+        <% allUsers.forEach((user)=>{ %>
+          <div class="container center">
+            <div class="requests-card">
+              <a class="button-86" href="/users/<%=currentUser._id%>/admins/<%=user._id%>/edit-user">
+                <%= user.username %>
+              </a>
+            </div>
+          </div>
 
-    <h1>All users</h1>
+          <% }) %>
 
-    <%if(allUsers.length !==0) {%>
+            <%}else{%>
 
-      <% allUsers.forEach((user)=>{ %>
+              <h1 class="title">There are no active users</h1>
 
-        <a class="btn" href="/users/<%=currentUser._id%>/admins/<%=user._id%>/edit-user">
-          <%= user.username %>
-        </a>
-
-        <% }) %>
-
-          <%}else{%>
-
-            <h2>There are no active users.</h2>
-
-            <%}%>
+              <%}%>
+    </div>
 </body>
 
 </html>

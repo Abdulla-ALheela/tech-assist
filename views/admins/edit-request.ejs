@@ -11,29 +11,57 @@
 </head>
 
 <body>
+
   <%- include('../partials/_admin-navbar.ejs') %>
-    <h1 class="title">Request ID:<%= request.requestId %></h1>
 
-    <p>request:<%= request.requestDescription %></p>
 
-    <p>Assigned Admin: <%= admin.username%></p>
 
-    <p>User Name: <%= currentUser.username%></p>
+    <div class="container center">
+      <div class="requests-card">
 
-    <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"
-      method="POST">
-      <!-- dispaly the current status of the request -->
-      <label for="status">Status:</label>
-      <select id="status" name="status">
-        <option value="open" <%=request.status==="open" ? "selected" : "" %>>open</option>
-        <option value="in progress" <%=request.status==="in progress" ? "selected" : "" %>>in progress</option>
-        <option value="closed" <%=request.status==="closed" ? "selected" : "" %>>closed</option>
-        <option value="rejected" <%=request.status==="rejected" ? "selected" : "" %>>Rejected</option>
-      </select>
+        <h1 class="font"><b>Request ID:</b> <%= request.requestId %>
+        </h1>
+        <hr />
+        <p class="description"><b>Request Description:</b> <%= request.requestDescription %>
+        </p>
 
-      <button type="submit" class="btn">change status</button>
+        <p class="description"><b>Assigned Admin:</b> <%= admin.username%>
+        </p>
 
-    </form>
+        <p class="description"><b>User Username:</b> <%= currentUser.username%>
+        </p>
+
+        <form action="/users/<%= currentUser._id %>/admins/<%= currentUser._id %>/<%= request._id %>?_method=PUT"
+          method="POST">
+          <!-- dispaly the current status of the request -->
+          <label class="description" for="status"><b>Status</b></label>
+          <div class="box">
+            <select id="status" name="status">
+              <option value="open" <%=request.status==="open" ? "selected" : "" %>>open</option>
+              <option value="in progress" <%=request.status==="in progress" ? "selected" : "" %>>in progress</option>
+              <option value="closed" <%=request.status==="closed" ? "selected" : "" %>>closed</option>
+              <option value="rejected" <%=request.status==="rejected" ? "selected" : "" %>>Rejected</option>
+            </select>
+          </div>
+
+          <label class="description" for="admin"><b>Change the assigned admin</b></label>
+          <div class="box">
+            <select id="admin" name="admin">
+              <% users.forEach((user)=>{ %>
+                <% if(user.isAdmin===true){%>
+                  <option value="<%= user._id %>" <%=user.username===admin.username ? "selected" : "" %>>
+                    <%= user.username %>
+                  </option>
+                  <%};%>
+                    <% }) %>
+            </select>
+          </div>
+
+          <button type="submit" class="button-86">change status</button>
+
+        </form>
+      </div>
+    </div>
 </body>
 
 </html>

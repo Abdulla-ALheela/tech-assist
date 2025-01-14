@@ -14,11 +14,11 @@
             <div class="requests-card">
                 <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT" method="POST">
 
-                    <label class="description" for="requestDescription">Request:</label>
+                    <label class="description" for="requestDescription"><b>Request Description</b></label>
                     <input type="text" name="requestDescription" id="requestDescription"
                         value="<%= request.requestDescription %>" />
 
-                    <label class="description" for="admin">Select Admin:</label>
+                    <label class="description" for="admin"><b>Select Admin </b></label>
                     <div class="box">
                         <select id="admin" name="admin">
                             <% users.forEach((user)=>{ %>

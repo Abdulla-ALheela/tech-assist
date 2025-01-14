@@ -11,16 +11,17 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
+    <%if( requests.length !==0) {%>
         <h1 class="title">Your Requests</h1>
 
         <div class="row">
             <% requests.forEach((request)=>{ %>
                 <div class="container center">
                     <div class="requests-card">
-                        <h2 class="font">ID :<%= request.requestId %>
+                        <h2 class="font"><b>ID:</b> <%= request.requestId %>
                         </h2>
                         <hr />
-                        <p class="description"> Description: <%= request.requestDescription %>
+                        <p class="description"> <b>Description:</b> <%= request.requestDescription %>
                         </p>
                         <div class="more-information">
                             <button class="button-86">
@@ -31,6 +32,9 @@
                 </div>
                 <% }) %>
         </div>
+        <%}else{%>
+            <h1 class="title">No Requests</h1>
+            <%}%>
         <br>
         <a class="button-86" href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>

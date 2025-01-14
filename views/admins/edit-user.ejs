@@ -10,13 +10,19 @@
 
 <body>
     <%- include('../partials/_admin-navbar.ejs') %>
-        <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
+        <div class="container center">
+            <div class="requests-card">
+                <h1 class="font"> <%= user.username %> </h1>
+                <hr />
+                <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
 
-            <label for="is-Admin">Make <%= user.username %> Admin</label>
-            <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
+                    <label class="description" for="is-Admin"><b>Add/Remove Admin</b></label>
+                    <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
 
-                <button type="submit" class="btn">Change User to Admin</button>
-        </form>
+                        <button class="button-86" type="submit" class="btn">Committ</button>
+                </form>
+            </div>
+        </div>
 </body>
 
 </html>
