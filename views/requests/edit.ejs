@@ -10,26 +10,34 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-        <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT" method="POST">
+        <div class="container center">
+            <div class="requests-card">
+                <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=PUT" method="POST">
 
-            <label for="requestDescription">Request:</label>
-            <input type="text" name="requestDescription" id="requestDescription"
-                value="<%= request.requestDescription %>" />
+                    <label class="description" for="requestDescription">Request:</label>
+                    <input type="text" name="requestDescription" id="requestDescription"
+                        value="<%= request.requestDescription %>" />
 
-            <label for="admin">Select Admin:</label>
-            <select id="admin" name="admin">
-                <% users.forEach((user)=>{ %>
-                    <% if(user.isAdmin===true){%>
-                        <option value="<%= user._id %>" <%=user.username===admin.username ? "selected" : "" %>>
-                            <%= user.username %>
-                        </option>
-                        <%};%>
-                            <% }) %>
-            </select>
+                    <label class="description" for="admin">Select Admin:</label>
+                    <div class="box">
+                        <select id="admin" name="admin">
+                            <% users.forEach((user)=>{ %>
+                                <% if(user.isAdmin===true){%>
+                                    <option value="<%= user._id %>" <%=user.username===admin.username ? "selected" : ""
+                                        %>>
+                                        <%= user.username %>
+                                    </option>
+                                    <%};%>
+                                        <% }) %>
+                        </select>
+                    </div>
 
-            <button class="btn" type="submit">Edit Request</button>
-
-        </form>
+                    <div class="more-information">
+                        <button class="button-86" type="submit">Edit Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 </body>
 
 </html>

@@ -10,30 +10,36 @@
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+        <div class="container center">
+            <div class="requests-card">
+                <form action="/users/:userId/requests" method="POST">
 
-        <form action="/users/:userId/requests" method="POST">
+                    <label class="description" for="requestDescription">Request</label>
+                    <input type="text" name="requestDescription" id="requestDescription" />
 
-            <label for="requestDescription">Request:</label>
-            <input type="text" name="requestDescription" id="requestDescription" />
 
-            <label for="admin">Select Admin:</label>
-            <select id="admin" name="admin">
+                    <label class="description" for="admin">Select Admin</label>
+                    <div class="box">
+                        <select class="select-text" id="admin" name="admin">
 
-                <% users.forEach((user)=>{ %>
-                    <% if(user.isAdmin===true){%>
-                        <option value="<%= user._id %>">
-                            <%= user.username %>
-                        </option>
-                        <%};%>
-                            <% }) %>
+                            <% users.forEach((user)=>{ %>
+                                <% if(user.isAdmin===true){%>
+                                    <option class="select-text" value="<%= user._id %>">
+                                        <%= user.username %>
+                                    </option>
+                                    <%};%>
+                                        <% }) %>
+                        </select>
+                    </div>
 
-            </select>
+                    <input type="hidden" id="status" name="status" value="open">
 
-            <input type="hidden" id="status" name="status" value="open">
-
-            <button class="btn" type="submit">Add Request</button>
-
-        </form>
+                    <div class="more-information">
+                        <button class="button-86" type="submit">Add Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 </body>
 
 </html>

@@ -11,19 +11,28 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-        <h1>Your Requests</h1>
+        <h1 class="title">Your Requests</h1>
 
-        <ul>
+        <div class="row">
             <% requests.forEach((request)=>{ %>
-                <li>
-                    <a href="/users/<%= user._id %>/requests/<%= request._id %>">
-                        Request: <%= request.requestId %>
-                    </a>
-                </li>
+                <div class="container center">
+                    <div class="requests-card">
+                        <h2 class="font">ID :<%= request.requestId %>
+                        </h2>
+                        <hr />
+                        <p class="description"> Description: <%= request.requestDescription %>
+                        </p>
+                        <div class="more-information">
+                            <button class="button-86">
+                                <a href="/users/<%= user._id %>/requests/<%= request._id %>"> More Information</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <% }) %>
-        </ul>
-
-        <a class="btn" href="/users/<%=user._id%>/requests/new">Add a request</a>
+        </div>
+        <br>
+        <a class="button-86" href="/users/<%=user._id%>/requests/new">Add a request</a>
 </body>
 
 </html>

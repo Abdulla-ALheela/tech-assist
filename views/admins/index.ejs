@@ -10,21 +10,33 @@
 
 <body>
     <%- include('../partials/_admin-navbar.ejs') %>
-        <h1>Hi Admin</h1>
+        <h1 class="title">Assigned Requests</h1>
 
-        <ul>
-            <% users.forEach((user)=>{ %>
-                <li>
-                    <a href="/users/<%= user._id %>/admins/<%= user._id %>/<%= user.requests._id %>/edit">
-                        Request: <%= user.requests.requestId %>
-                    </a>
-                </li>
-                <% }) %>
-        </ul>
+        <div class="row">
+        <% users.forEach((user)=>{ %>
+            <div class="container center">
+                <div class="requests-card">
+                    <h2 class="font">ID :<%= user.requests.requestId %>
+                    </h2>
+                    <hr />
+                    <p class="description"> Description: <%= user.requests.requestDescription %>
+                    </p>
 
-        <a class="btn" href="/users/<%=currentUser._id%>/admins/master">
-            Create Admins
-        </a>
+                    <div class="more-information">
+                        <button class="button-86">
+                            <a href="/users/<%= user._id %>/admins/<%= user._id %>/<%= user.requests._id %>/edit">
+                                More Information</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+
+                <a class="button-86" href="/users/<%=currentUser._id%>/admins/master">
+                    Create Admins
+                </a>
+
 </body>
 
 </html>

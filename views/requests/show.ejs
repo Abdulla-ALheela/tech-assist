@@ -12,29 +12,31 @@
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
+  <div class="container center">
+    <div class="requests-card">
 
-    <h1>Request ID:<%= request.requestId %>
-    </h1>
+    <h1 class="font">Request ID:<%= request.requestId %></h1>
 
-    <p>request:<%= request.requestDescription %>
-    </p>
+    <p class="description" >request:<%= request.requestDescription %> </p>
 
-    <p>Assigned Admin: <%= admin.username%>
-    </p>
+    <p class="description" >Assigned Admin: <%= admin.username%></p>
 
-    <p>Status: <%= request.status%>
-    </p>
+    <p class="description" >Status: <%= request.status%></p>
 
-    <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">
-      Edit this request
-    </a>
+    <div class="more-information">
+      <button class="button-86">
+        <a href="/users/<%= user._id %>/requests/<%= request._id %>/edit">Edit this request</a>
+      </button>
+ 
 
     <form action="/users/<%= user._id %>/requests/<%= request._id %>?_method=DELETE" method="POST">
 
-      <button class="btn" type="submit">Delete this Request</button>
+      <button class="button-86" type="submit">Delete this Request</button>
 
     </form>
-
+  </div>
+  </div>
+</div>
 </body>
 
 </html>
