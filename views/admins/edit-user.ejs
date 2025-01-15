@@ -12,14 +12,21 @@
     <%- include('../partials/_admin-navbar.ejs') %>
         <div class="container center">
             <div class="requests-card">
-                <h1 class="font"> <%= user.username %> </h1>
+                <h1 class="font">
+                    <%= user.username %>
+                </h1>
                 <hr />
                 <form action="/users/<%=currentUser._id%>/admins/<%=user._id%>?_method=PUT" method="POST">
 
-                    <label class="description" for="is-Admin"><b>Add/Remove Admin</b></label>
-                    <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
+                    <label for="is-Admin" class="description"><b>Add/Remove Admin</b></label>
+                    <div class="checkbox-wrapper-26">
+                        <input type="checkbox" name="isAdmin" id="is-Admin" <% if (user.isAdmin) { %>checked<% } %> />
+                            <label class="description" for="is-Admin">
+                                <div class="tick_mark"></div>
+                            </label>
+                    </div>
 
-                        <button class="button-86" type="submit" class="btn">Committ</button>
+                    <button class="button-86" type="submit" class="btn">Committ</button>
                 </form>
             </div>
         </div>
