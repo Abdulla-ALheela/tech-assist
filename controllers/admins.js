@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     ]);
 
 
-    res.render('admins/index.ejs', {
+    res.render("admins/index.ejs", {
       currentUser: currentUser,
       users: users,
     });
@@ -53,7 +53,7 @@ router.get('/master', async (req, res) => {
 
 
 //render the form to make a user admin
-router.get('/:userId/edit-user', async (req, res) => {
+router.get("/:userId/edit-user", async (req, res) => {
   try {
 
     //get admin information and the user infomation 
@@ -75,7 +75,7 @@ router.get('/:userId/edit-user', async (req, res) => {
 
 
 //render edit-request view to edit the request status
-router.get("/:userId/:requestId/edit", async (req, res) => {
+router.get("/:userId/:requestId/edit-requests", async (req, res) => {
   try {
 
     //get the user who created the request and then get the request information with the assigned admin information
