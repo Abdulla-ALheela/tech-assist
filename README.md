@@ -3,7 +3,7 @@
 **TechAssist** is a user-friendly app designed to streamline IT support requests. It allows users to create, edit, view, and delete requests, ensuring a smooth and efficient communication process with the Admins. When a user submits a new request, they can assign it to the Admins, who can then provide updates on the status of the request in real-time.
 
 
-![Screenshot from app](https://imgur.com/a/YRotqNr)
+![Screenshot from app](https://iili.io/3vr5gbj.md.png)
 
 ----------
 
